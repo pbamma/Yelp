@@ -120,6 +120,7 @@
 		CD64921220068D8F009035F4 = {
 			isa = PBXGroup;
 			children = (
+				CDF87AA7200713E700B66B76 /* README.md */,
 				CD64921D20068D8F009035F4 /* App */,
 				CD64923220068D90009035F4 /* AppTests */,
 				CD64921C20068D8F009035F4 /* Products */,
@@ -150,7 +151,6 @@
 				CD64922520068D8F009035F4 /* Assets.xcassets */,
 				CD64922720068D8F009035F4 /* LaunchScreen.storyboard */,
 				CD64922A20068D8F009035F4 /* Info.plist */,
-				CDF87AA7200713E700B66B76 /* README.md */,
 			);
 			path = App;
 			sourceTree = "<group>";
