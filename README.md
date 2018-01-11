@@ -17,7 +17,7 @@
 
 # Architecture
 - MVC-N (Modle-View-Controller-Network)
-- Persistence - CoreData
+- Persistence - CoreData, (last location using UserDefaults minimally)
 - RESTful with Yelp backend
 - Capabilities - Maps + CoreLocation
 

@@ -8,6 +8,7 @@ target 'App' do
 pod 'Alamofire'
 pod 'SwiftyJSON'
 pod 'SDWebImage'
+pod 'HCSStarRatingView', '~> 1.5'
 
   # Pods for App
 

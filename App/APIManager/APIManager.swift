@@ -25,7 +25,9 @@ class APIManager {
 
     
     /// get a list of businesses
-    /// https://www.yelp.com/developers/documentation/v3/business_search?text=pizza&latitude=37.786882&longitude=-122.399972
+    /// GET https://api.yelp.com/v3/businesses/search
+    /// :param: term - a search term like 'pizza' or 'starbucks'.
+    /// :param: lat, long - a location on earth to search around.
     /// :param: callback: onCompletion 'Businesses' data.
     func getSearch(term:String, lat: Double, long: Double, onCompletion: ((_ businesses: [Business]?, _ error: Error?) -> Void)?) {
         let requestString = (Constants.YelpHost + "businesses/search" + "?term=\(term)" + "&latitude=\(lat)" + "&longitude=\(long)")
@@ -39,6 +41,30 @@ class APIManager {
                     let search = Search(json: json)
                     
                     onCompletion!(search.businesses, nil)
+                } catch {
+                    print("error: \(error.localizedDescription)")
+                    onCompletion!(nil, error)
+                }
+            } else {
+                onCompletion!(nil, nil)
+            }
+        }
+    }
+    
+    /// get a business by id
+    /// GET https://api.yelp.com/v3/businesses/{id}
+    /// :param: id - a business id returned from a search
+    /// :param: callback: onCompletion 'Businesses' data.
+    func getBusiness(id:String, onCompletion: ((_ business: BusinessDetail?, _ error: Error?) -> Void)?) {
+        let requestString = (Constants.YelpHost + "businesses/\(id)")
+        
+        Alamofire.request(requestString, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: Constants.headers).responseJSON { (response) in
+            
+            if let data = response.data {
+                do {
+                    let json = try JSON.init(data: data)
+                    let detail = BusinessDetail(json: json)
+                    onCompletion!(detail, nil)
                 } catch {
                     print("error: \(error.localizedDescription)")
                     onCompletion!(nil, error)

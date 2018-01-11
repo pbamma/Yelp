@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import HCSStarRatingView
 
 class DetailViewController: UIViewController {
     
@@ -19,6 +20,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var dataTextView: UITextView!
     
+    @IBOutlet weak var starRating: HCSStarRatingView!
     var business: Business!
 
     override func viewDidLoad() {
@@ -30,7 +32,6 @@ class DetailViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,6 +52,41 @@ class DetailViewController: UIViewController {
     
     func displayData() {
         
+        APIManager.sharedInstance.getBusiness(id: business.id!) { (businessDetail: BusinessDetail?, error: Error?) in
+            //we've got the full business
+            if let businessDetail = businessDetail {
+                var dataString = self.dataTextView.text!
+                dataString += "\n"
+                if let hours = businessDetail.hours {
+                    if let isOpen = hours[0].isOpenNow, isOpen == true {
+                        dataString += "Open Now: YES" + "\n"
+                    } else {
+                        dataString += "Open Now: NO" + "\n"
+                    }
+                    
+                    if let open = hours[0].open {
+                        let dayOfWeek = Utils.getDayOfWeek()
+                        if dayOfWeek < open.count {
+                            let today = open[dayOfWeek]
+                            let start = Utils.fourDigitHourConverter(time: today.start)
+                            let end = Utils.fourDigitHourConverter(time: today.end)
+                            dataString += "Hours Open Today: \(start) - \(end)"
+                        }
+                    }
+                }
+                
+                self.dataTextView.text = dataString
+                
+                //more accurate rating
+                if let rating = businessDetail.rating {
+                    self.starRating.value = CGFloat(rating)
+                }
+                
+                
+            }
+            
+        }
+        
         self.nameLabel.text = ""
         self.nameLabel.text = self.business.name
         
@@ -61,6 +97,10 @@ class DetailViewController: UIViewController {
         
         if let price = business.price {
             self.priceLabel.text = price
+        }
+        
+        if let rating = business.rating {
+            self.starRating.value = CGFloat(rating)
         }
         
         var dataString = "Phone: "
@@ -78,14 +118,6 @@ class DetailViewController: UIViewController {
             }
         } else {
             dataString += "No Address" + "\n"
-        }
-        
-        dataString += "\n"
-        dataString += "Web: "
-        if let url = business.url {
-            dataString += url + "\n"
-        } else {
-            dataString += "No Homepage" + "\n"
         }
         
         dataTextView.text = dataString

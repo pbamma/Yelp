@@ -1,8 +1,8 @@
 //
-//  Location.swift
+//  BDLocation.swift
 //
-//  Created by Philip Starner on 1/10/18
-//  Copyright © 2018 Philip Starner. All rights reserved.
+//  Created by Philip Starner on 1/11/18
+//  Copyright (c) Philip Starner. All rights reserved.
 //
 
 import Foundation
@@ -19,6 +19,7 @@ public struct Location {
     static let address2 = "address2"
     static let displayAddress = "display_address"
     static let zipCode = "zip_code"
+    static let crossStreets = "cross_streets"
     static let country = "country"
   }
 
@@ -30,6 +31,7 @@ public struct Location {
   public var address2: String?
   public var displayAddress: [String]?
   public var zipCode: String?
+  public var crossStreets: String?
   public var country: String?
 
   // MARK: SwiftyJSON Initializers
@@ -52,6 +54,7 @@ public struct Location {
     address2 = json[SerializationKeys.address2].string
     if let items = json[SerializationKeys.displayAddress].array { displayAddress = items.map { $0.stringValue } }
     zipCode = json[SerializationKeys.zipCode].string
+    crossStreets = json[SerializationKeys.crossStreets].string
     country = json[SerializationKeys.country].string
   }
 
@@ -67,6 +70,7 @@ public struct Location {
     if let value = address2 { dictionary[SerializationKeys.address2] = value }
     if let value = displayAddress { dictionary[SerializationKeys.displayAddress] = value }
     if let value = zipCode { dictionary[SerializationKeys.zipCode] = value }
+    if let value = crossStreets { dictionary[SerializationKeys.crossStreets] = value }
     if let value = country { dictionary[SerializationKeys.country] = value }
     return dictionary
   }

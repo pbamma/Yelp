@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '855122CC88E2C25FE7EB835A33AD1DC9'
-               BlueprintName = 'SDWebImage'
+               BlueprintIdentifier = '45FF4A7AFE5D8E17D01023C53AED87FF'
+               BlueprintName = 'HCSStarRatingView'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'SDWebImage.framework'>
+               BuildableName = 'HCSStarRatingView.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

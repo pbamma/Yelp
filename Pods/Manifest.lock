@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.6.0)
+  - HCSStarRatingView (1.5)
   - SDWebImage (4.2.3):
     - SDWebImage/Core (= 4.2.3)
   - SDWebImage/Core (4.2.3)
@@ -7,14 +8,16 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - HCSStarRatingView (~> 1.5)
   - SDWebImage
   - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  HCSStarRatingView: 1d18f79654735514cd6f00e6d90e38cb6320dc31
   SDWebImage: 791bb72962b3492327ddcac4b1880bd1b5458431
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: e5ee565a8c61b31e25b9f935f3e79d00a28bd2bf
+PODFILE CHECKSUM: 2c2695a067ef3919798d89bd55444d97cd06c61b
 
 COCOAPODS: 1.3.1
