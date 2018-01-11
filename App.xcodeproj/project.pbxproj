@@ -29,7 +29,6 @@
 		CDF87AA22006CE2900B66B76 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF87A9B2006CE2800B66B76 /* Location.swift */; };
 		CDF87AA32006CE2900B66B76 /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF87A9C2006CE2900B66B76 /* Region.swift */; };
 		CDF87AA42006CE2900B66B76 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF87A9D2006CE2900B66B76 /* Coordinates.swift */; };
-		CDF87AA62006D3FE00B66B76 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF87AA52006D3FE00B66B76 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,7 +70,6 @@
 		CDF87A9B2006CE2800B66B76 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		CDF87A9C2006CE2900B66B76 /* Region.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
 		CDF87A9D2006CE2900B66B76 /* Coordinates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
-		CDF87AA52006D3FE00B66B76 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CDF87AA7200713E700B66B76 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		FCE268F9BEEEB8ADE86EFB29 /* Pods-AppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppTests/Pods-AppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FD7CE133CA93212EBD25773E /* Pods_AppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -197,7 +195,6 @@
 			isa = PBXGroup;
 			children = (
 				CDF87A942006C58400B66B76 /* Utils.swift */,
-				CDF87AA52006D3FE00B66B76 /* Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -447,7 +444,6 @@
 				CDF87A9E2006CE2900B66B76 /* Search.swift in Sources */,
 				CD64923F20069460009035F4 /* Constants.swift in Sources */,
 				CDF87AA42006CE2900B66B76 /* Coordinates.swift in Sources */,
-				CDF87AA62006D3FE00B66B76 /* Extensions.swift in Sources */,
 				CDF87AA02006CE2900B66B76 /* Categories.swift in Sources */,
 				CD6492592006B136009035F4 /* DetailViewController.swift in Sources */,
 				CDF87AA22006CE2900B66B76 /* Location.swift in Sources */,
