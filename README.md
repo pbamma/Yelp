@@ -14,6 +14,7 @@
 - CoreLocation to get user current possition (stored in UserDefaults)
 - AlamoFire to retrieve JSON data from Yelp API
 - CoreData to store past results when offline
+- HCSStarRatingView pod for star rating visual
 
 # Architecture
 - MVC-N (Modle-View-Controller-Network)
@@ -33,5 +34,6 @@ https://www.yelp.com/developers/documentation/v3
 
 # Bonus points
 
-Persist the search results locally for offline access.
+- Persist the search results locally for offline access.
+- Show a detail view of a business
 

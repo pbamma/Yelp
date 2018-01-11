@@ -23,11 +23,15 @@ class SearchViewController: UIViewController {
     let locationManager = CLLocationManager()
     var currentLocation:CLLocationCoordinate2D?
     
+    @IBOutlet weak var tableView: UITableView!
+    let testSearchStrings = ["pizza", "coffee", "grocery store", "bar"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.startLocating()
         self.setupSearchBarView()
+        tableView.alpha = 0
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -104,6 +108,46 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
 }
 
+extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return testSearchStrings.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = testSearchStrings[indexPath.item]
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.searchBar.text = self.testSearchStrings[indexPath.item]
+        self.searchBar.becomeFirstResponder()
+        showBookmarks(show: false)
+    }
+    
+    func showBookmarks(show: Bool) {
+        if show {
+            UIView.animate(withDuration: 0.3) {
+                self.tableView.alpha = 1
+            }
+        } else {
+            UIView.animate(withDuration: 0.3) {
+                self.tableView.alpha = 0
+            }
+        }
+    }
+    
+    func showAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(defaultAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+}
+
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.searchBar.resignFirstResponder()
@@ -113,13 +157,19 @@ extension SearchViewController: UISearchBarDelegate {
                     if let businesses = businesses {
                         self.business = businesses
                         self.collectionView.reloadData()
+                    } else {
+                        self.showAlert(title: "Sorry!", message: "No businesses returned from this search.")
+                        
+                        if let error = error {
+                            print("Error: \(error)")
+                        }
                     }
                 }
             } else {
-                print("we have no location data... sorry.")
+                self.showAlert(title: "Sorry!", message: "Your location hasn't been refined.  Make sure the settings for this app allows location.")
             }
         } else {
-            print("somehow the search box is empty.")
+            self.showAlert(title: "Sorry!", message: "Please enter text in the search!")
         }
     }
     
@@ -128,7 +178,8 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
-        //TODO: we've got to save the search term.
+        let isHidden = tableView.alpha == 0
+        showBookmarks(show: isHidden)
     }
 }
 
