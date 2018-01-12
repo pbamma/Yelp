@@ -84,7 +84,8 @@ class SearchViewController: UIViewController {
      
 }
 
-extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+//MARK: UICollectionViewDelegate methods
+extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let business = self.businesses {
             return business.count
@@ -106,8 +107,21 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         self.selectedBusiness = self.businesses![indexPath.item]
         self.performSegue(withIdentifier: "showDetail", sender: self)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        var size = CGSize(width: 183, height: 255)
+        if Constants.DeviceType.IS_IPHONE_5 {
+            size = CGSize(width: 155, height: 220)
+        } else if Constants.DeviceType.IS_IPHONE_6P {
+            size = CGSize(width: 202, height: 255)
+        } 
+        
+        return size
+    }
+    
 }
 
+//MARK: UITableViewDelegateDelegate methods
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
