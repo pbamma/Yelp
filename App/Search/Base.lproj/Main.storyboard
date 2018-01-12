@@ -12,7 +12,6 @@
     </dependencies>
     <customFonts key="customFonts">
         <array key="GillSans.ttc">
-            <string>GillSans-Bold</string>
             <string>GillSans-SemiBold</string>
         </array>
     </customFonts>
@@ -52,19 +51,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="wTL-xJ-aDH">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kgF-hB-XL2">
-                                <rect key="frame" x="142" y="309" width="90" height="49"/>
-                                <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="42"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jd8-IK-ZE0" userLabel="blurContainer">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
                             <searchBar contentMode="redraw" showsBookmarkButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6lg-Oi-LbJ">
                                 <rect key="frame" x="0.0" y="64" width="375" height="56"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -150,34 +136,23 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="jd8-IK-ZE0" secondAttribute="trailing" id="3kB-x0-iAT"/>
                             <constraint firstItem="6lg-Oi-LbJ" firstAttribute="leading" secondItem="Ays-Wv-Ih3" secondAttribute="leading" id="4oV-hZ-p8z"/>
                             <constraint firstItem="8q8-Q7-VtS" firstAttribute="trailing" secondItem="j75-1l-NZr" secondAttribute="trailing" constant="16" id="9wy-go-SfO"/>
                             <constraint firstAttribute="trailing" secondItem="6lg-Oi-LbJ" secondAttribute="trailing" id="FMQ-kf-tkB"/>
-                            <constraint firstItem="jd8-IK-ZE0" firstAttribute="leading" secondItem="Ays-Wv-Ih3" secondAttribute="leading" id="G8g-dC-rzE"/>
                             <constraint firstItem="KiF-bj-wf5" firstAttribute="top" secondItem="6lg-Oi-LbJ" secondAttribute="bottom" id="Gmz-DU-Cfb"/>
-                            <constraint firstItem="jd8-IK-ZE0" firstAttribute="top" secondItem="Ays-Wv-Ih3" secondAttribute="top" id="Q2p-t3-plN"/>
                             <constraint firstItem="j75-1l-NZr" firstAttribute="top" secondItem="6lg-Oi-LbJ" secondAttribute="bottom" constant="-12" id="Qeu-bV-jSA"/>
                             <constraint firstItem="j75-1l-NZr" firstAttribute="height" secondItem="Ays-Wv-Ih3" secondAttribute="height" multiplier="0.4" id="VcZ-aX-aEF"/>
                             <constraint firstItem="j75-1l-NZr" firstAttribute="leading" secondItem="8q8-Q7-VtS" secondAttribute="leading" constant="16" id="Xtp-mL-rl6"/>
-                            <constraint firstItem="kgF-hB-XL2" firstAttribute="centerY" secondItem="Ays-Wv-Ih3" secondAttribute="centerY" id="g35-U4-oue"/>
                             <constraint firstItem="6lg-Oi-LbJ" firstAttribute="top" secondItem="rri-3v-Y7U" secondAttribute="bottom" id="hwh-vm-xUm"/>
-                            <constraint firstAttribute="trailing" secondItem="wTL-xJ-aDH" secondAttribute="trailing" id="iKn-aM-Bnf"/>
                             <constraint firstAttribute="bottom" secondItem="KiF-bj-wf5" secondAttribute="bottom" id="j9P-yD-YYA"/>
                             <constraint firstItem="KiF-bj-wf5" firstAttribute="trailing" secondItem="8q8-Q7-VtS" secondAttribute="trailing" id="qAr-ZF-CZU"/>
-                            <constraint firstItem="wTL-xJ-aDH" firstAttribute="top" secondItem="Ays-Wv-Ih3" secondAttribute="top" id="tEr-0O-2Ww"/>
-                            <constraint firstItem="kgF-hB-XL2" firstAttribute="centerX" secondItem="Ays-Wv-Ih3" secondAttribute="centerX" id="vUH-B4-zv7"/>
-                            <constraint firstAttribute="bottom" secondItem="wTL-xJ-aDH" secondAttribute="bottom" id="vWG-Pr-iO4"/>
-                            <constraint firstAttribute="bottom" secondItem="jd8-IK-ZE0" secondAttribute="bottom" id="vZ5-wa-NOZ"/>
                             <constraint firstItem="KiF-bj-wf5" firstAttribute="leading" secondItem="8q8-Q7-VtS" secondAttribute="leading" id="vZl-HB-QT2"/>
-                            <constraint firstItem="wTL-xJ-aDH" firstAttribute="leading" secondItem="Ays-Wv-Ih3" secondAttribute="leading" id="yNz-GJ-NmX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8q8-Q7-VtS"/>
                     </view>
                     <navigationItem key="navigationItem" title="Yelper" id="mbO-Or-Rym"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
-                        <outlet property="blurContainer" destination="jd8-IK-ZE0" id="bR8-pe-y6G"/>
                         <outlet property="collectionView" destination="KiF-bj-wf5" id="Gjk-dx-ZHQ"/>
                         <outlet property="searchBar" destination="6lg-Oi-LbJ" id="Gan-ev-BCk"/>
                         <outlet property="searchDisplayController" destination="bVR-gF-LEF" id="Jxk-gm-wsE"/>
@@ -206,7 +181,4 @@
             <point key="canvasLocation" x="1029" y="-67"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="background" width="512" height="512"/>
-    </resources>
 </document>

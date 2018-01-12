@@ -21,6 +21,7 @@
 		CD6492552006AAC5009035F4 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6492542006AAC5009035F4 /* SearchCollectionViewCell.swift */; };
 		CD6492572006B0EF009035F4 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD6492562006B0EF009035F4 /* Detail.storyboard */; };
 		CD6492592006B136009035F4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6492582006B136009035F4 /* DetailViewController.swift */; };
+		CD7F07B720094A2000C156E4 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7F07B620094A2000C156E4 /* BaseViewController.swift */; };
 		CDF87A952006C58400B66B76 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF87A942006C58400B66B76 /* Utils.swift */; };
 		CDF87A9E2006CE2900B66B76 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF87A972006CE2800B66B76 /* Search.swift */; };
 		CDF87A9F2006CE2900B66B76 /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF87A982006CE2800B66B76 /* Business.swift */; };
@@ -72,6 +73,7 @@
 		CD6492542006AAC5009035F4 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		CD6492562006B0EF009035F4 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		CD6492582006B136009035F4 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		CD7F07B620094A2000C156E4 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		CDF87A942006C58400B66B76 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		CDF87A972006CE2800B66B76 /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		CDF87A982006CE2800B66B76 /* Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 			children = (
 				CD64921E20068D8F009035F4 /* AppDelegate.swift */,
 				CD64923E20069460009035F4 /* Constants.swift */,
+				CD7F07B620094A2000C156E4 /* BaseViewController.swift */,
 				CD6492402006965C009035F4 /* Search */,
 				CD64924220069671009035F4 /* Detail */,
 				CD64924B20069BFA009035F4 /* APIManager */,
@@ -494,6 +497,7 @@
 				CD6492592006B136009035F4 /* DetailViewController.swift in Sources */,
 				CDF87AC1200818A900B66B76 /* DatabaseController.swift in Sources */,
 				CDF87A9F2006CE2900B66B76 /* Business.swift in Sources */,
+				CD7F07B720094A2000C156E4 /* BaseViewController.swift in Sources */,
 				CDF87AB7200808EF00B66B76 /* StoredBusiness.xcdatamodeld in Sources */,
 				CDF87AAE2007DF2900B66B76 /* BusinessDetail.swift in Sources */,
 				CDF87AAF2007DF2900B66B76 /* Hours.swift in Sources */,

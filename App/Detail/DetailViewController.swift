@@ -12,10 +12,7 @@ import UIKit
 import SDWebImage
 import HCSStarRatingView
 
-class DetailViewController: UIViewController {
-    
-    @IBOutlet weak var blurContainer: UIView!
-    var blurContainerEffectView: UIVisualEffectView?
+class DetailViewController: BaseViewController {
     
     @IBOutlet weak var imageThumb: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -27,33 +24,16 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         displayData()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.setupBlurView()
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func setupBlurView() {
-        //add blur to container
-        if self.blurContainerEffectView == nil {
-            let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
-            self.blurContainerEffectView = UIVisualEffectView(effect: blurEffect)
-            self.blurContainerEffectView!.frame = view.bounds
-            self.blurContainerEffectView!.autoresizingMask = [.flexibleWidth, .flexibleHeight] // for supporting device rotation
-            self.blurContainer.insertSubview(self.blurContainerEffectView!, at: 0)
-        }
     }
     
     func displayData() {

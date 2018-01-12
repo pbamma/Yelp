@@ -11,10 +11,8 @@ import Alamofire
 import SDWebImage
 import MapKit
 
-class SearchViewController: UIViewController {
+class SearchViewController: BaseViewController {
 
-    @IBOutlet weak var blurContainer: UIView!
-    var blurContainerEffectView: UIVisualEffectView?
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
     var businesses:[CDBusiness]?
@@ -33,12 +31,6 @@ class SearchViewController: UIViewController {
         self.setupSearchBarView()
         tableView.alpha = 0
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.setupBlurView()
-    }
-
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -69,17 +61,6 @@ class SearchViewController: UIViewController {
     func setupSearchBarView() {
         self.searchBar.backgroundColor = UIColor.clear
         self.searchBar.backgroundImage = UIImage()
-    }
-    
-    func setupBlurView() {
-        //add blur to container
-        if self.blurContainerEffectView == nil {
-            let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
-            self.blurContainerEffectView = UIVisualEffectView(effect: blurEffect)
-            self.blurContainerEffectView!.frame = view.bounds
-            self.blurContainerEffectView!.autoresizingMask = [.flexibleWidth, .flexibleHeight] // for supporting device rotation
-            self.blurContainer.insertSubview(self.blurContainerEffectView!, at: 0)
-        }
     }
      
 }
@@ -161,15 +142,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
                 self.tableView.alpha = 0
             }
         }
-    }
-    
-    func showAlert(title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alertController.addAction(defaultAction)
-        
-        present(alertController, animated: true, completion: nil)
     }
 }
 
