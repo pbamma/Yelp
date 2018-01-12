@@ -48,3 +48,13 @@ https://www.yelp.com/developers/documentation/v3
 - Persist the search results locally for offline access.
 - Show a detail view of a business
 
+# Dev Notes
+- SwiftyJSON is old school.  Could use a Swift4 Codable facelift
+- results are sorted by name... should be sorted by proximity to current location, though name does make sense in a certain way.
+- search results are going to pile up over time (bloated Database)... need some kind of FIFO purge... say after 20 results.  (this isn't too bad because we're not saving image blobs, so I'm not worried at all with this simple project)
+- an image cache management system would be really cool.  SDWebImage is outdated and currently not customized to our special needs.
+- app needs Unit Tests!!!
+- app could use simple onboarding.
+- app could use empty states
+
+

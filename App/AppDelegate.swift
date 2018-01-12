@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        initializeLocationIfNeeded()
         return true
     }
 
@@ -42,6 +43,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DatabaseController.saveContext()
     }
 
-
+    //simulator friendly
+    func initializeLocationIfNeeded() {
+        if let _ = UserDefaults.standard.value(forKey: Constants.USER_DEFAULT_LATITUDE) as? Double, let _ = UserDefaults.standard.value(forKey: Constants.USER_DEFAULT_LONGITUDE) as? Double {
+            //do nothing
+        } else {
+            //Irvine 33.6850179,-118.332813
+            UserDefaults.standard.set(33.6850179, forKey: Constants.USER_DEFAULT_LATITUDE)
+            UserDefaults.standard.set(-118.332813, forKey: Constants.USER_DEFAULT_LONGITUDE)
+        }
+    }
 }
 

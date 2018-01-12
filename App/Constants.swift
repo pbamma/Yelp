@@ -26,5 +26,6 @@ class Constants: NSObject {
     
     static let USER_DEFAULT_LATITUDE = "USER_DEFAULT_LATITUDE"
     static let USER_DEFAULT_LONGITUDE = "USER_DEFAULT_LONGITUDE"
+    
 
 }
