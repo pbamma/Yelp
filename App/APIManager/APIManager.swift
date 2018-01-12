@@ -42,7 +42,12 @@ class APIManager {
                         
                         let search = Search(json: json)
                         
+                        //update the coreData
+                        DatabaseManager.sharedInstance.createOrUpdateSearchTerm(id: term, lat: lat, long: long, business: search.businesses!)
+                        
+                        //make callback
                         onCompletion!(search.businesses, nil)
+                        
                     } catch {
                         print("Error: \(error.localizedDescription)")
                         onCompletion!(nil, error)

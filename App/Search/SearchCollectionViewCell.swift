@@ -26,9 +26,9 @@ class SearchCollectionViewCell: UICollectionViewCell {
         nameLabel.text = ""
     }
     
-    func loadModel(business: Business) {
+    func loadModel(business: CDBusiness) {
         self.nameLabel.text = business.name
-        if let imageURL = business.imageUrl  {
+        if let imageURL = business.imageURL  {
             let url = URL(string: imageURL)
             self.imageThumb.sd_setImage(with: url)
         }

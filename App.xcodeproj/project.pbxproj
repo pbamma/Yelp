@@ -32,6 +32,13 @@
 		CDF87AAF2007DF2900B66B76 /* Hours.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF87AA92007DF2800B66B76 /* Hours.swift */; };
 		CDF87AB12007DF2900B66B76 /* Open.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF87AAB2007DF2800B66B76 /* Open.swift */; };
 		CDF87AB22007DF2900B66B76 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF87AAC2007DF2900B66B76 /* Location.swift */; };
+		CDF87AB7200808EF00B66B76 /* StoredBusiness.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CDF87AB5200808EF00B66B76 /* StoredBusiness.xcdatamodeld */; };
+		CDF87ABC200817C500B66B76 /* CDSearchTerm+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF87AB8200817C400B66B76 /* CDSearchTerm+CoreDataClass.swift */; };
+		CDF87ABD200817C500B66B76 /* CDBusiness+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF87AB9200817C400B66B76 /* CDBusiness+CoreDataProperties.swift */; };
+		CDF87ABE200817C500B66B76 /* CDBusiness+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF87ABA200817C500B66B76 /* CDBusiness+CoreDataClass.swift */; };
+		CDF87ABF200817C500B66B76 /* CDSearchTerm+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF87ABB200817C500B66B76 /* CDSearchTerm+CoreDataProperties.swift */; };
+		CDF87AC1200818A900B66B76 /* DatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF87AC0200818A900B66B76 /* DatabaseController.swift */; };
+		CDF87AC3200819A000B66B76 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF87AC2200819A000B66B76 /* DatabaseManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +84,13 @@
 		CDF87AA92007DF2800B66B76 /* Hours.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hours.swift; sourceTree = "<group>"; };
 		CDF87AAB2007DF2800B66B76 /* Open.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Open.swift; sourceTree = "<group>"; };
 		CDF87AAC2007DF2900B66B76 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		CDF87AB6200808EF00B66B76 /* StoredBusiness.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StoredBusiness.xcdatamodel; sourceTree = "<group>"; };
+		CDF87AB8200817C400B66B76 /* CDSearchTerm+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDSearchTerm+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CDF87AB9200817C400B66B76 /* CDBusiness+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDBusiness+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CDF87ABA200817C500B66B76 /* CDBusiness+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDBusiness+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CDF87ABB200817C500B66B76 /* CDSearchTerm+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDSearchTerm+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CDF87AC0200818A900B66B76 /* DatabaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseController.swift; sourceTree = "<group>"; };
+		CDF87AC2200819A000B66B76 /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		FCE268F9BEEEB8ADE86EFB29 /* Pods-AppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppTests/Pods-AppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FD7CE133CA93212EBD25773E /* Pods_AppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -154,6 +168,7 @@
 				CD64924B20069BFA009035F4 /* APIManager */,
 				CDF87A932006C51600B66B76 /* Utils */,
 				CDF87A962006CE1400B66B76 /* Model */,
+				CDF87AB42008085D00B66B76 /* CoreData */,
 				CD64922520068D8F009035F4 /* Assets.xcassets */,
 				CD64922720068D8F009035F4 /* LaunchScreen.storyboard */,
 				CD64922A20068D8F009035F4 /* Info.plist */,
@@ -213,13 +228,27 @@
 				CDF87A992006CE2800B66B76 /* Categories.swift */,
 				CDF87A9A2006CE2800B66B76 /* Center.swift */,
 				CDF87A9D2006CE2900B66B76 /* Coordinates.swift */,
+				CDF87AAC2007DF2900B66B76 /* Location.swift */,
 				CDF87A9C2006CE2900B66B76 /* Region.swift */,
 				CDF87AA82007DF2800B66B76 /* BusinessDetail.swift */,
 				CDF87AA92007DF2800B66B76 /* Hours.swift */,
-				CDF87AAC2007DF2900B66B76 /* Location.swift */,
 				CDF87AAB2007DF2800B66B76 /* Open.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		CDF87AB42008085D00B66B76 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				CDF87AC2200819A000B66B76 /* DatabaseManager.swift */,
+				CDF87AC0200818A900B66B76 /* DatabaseController.swift */,
+				CDF87AB8200817C400B66B76 /* CDSearchTerm+CoreDataClass.swift */,
+				CDF87ABB200817C500B66B76 /* CDSearchTerm+CoreDataProperties.swift */,
+				CDF87AB9200817C400B66B76 /* CDBusiness+CoreDataProperties.swift */,
+				CDF87ABA200817C500B66B76 /* CDBusiness+CoreDataClass.swift */,
+				CDF87AB5200808EF00B66B76 /* StoredBusiness.xcdatamodeld */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -445,20 +474,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDF87AC3200819A000B66B76 /* DatabaseManager.swift in Sources */,
 				CDF87AA12006CE2900B66B76 /* Center.swift in Sources */,
 				CD6492492006970E009035F4 /* SearchViewController.swift in Sources */,
 				CD64921F20068D8F009035F4 /* AppDelegate.swift in Sources */,
+				CDF87ABC200817C500B66B76 /* CDSearchTerm+CoreDataClass.swift in Sources */,
 				CD6492552006AAC5009035F4 /* SearchCollectionViewCell.swift in Sources */,
 				CDF87A952006C58400B66B76 /* Utils.swift in Sources */,
 				CDF87AA32006CE2900B66B76 /* Region.swift in Sources */,
 				CDF87AB22007DF2900B66B76 /* Location.swift in Sources */,
+				CDF87ABD200817C500B66B76 /* CDBusiness+CoreDataProperties.swift in Sources */,
 				CD64924D2006A33C009035F4 /* APIManager.swift in Sources */,
+				CDF87ABF200817C500B66B76 /* CDSearchTerm+CoreDataProperties.swift in Sources */,
 				CDF87A9E2006CE2900B66B76 /* Search.swift in Sources */,
 				CD64923F20069460009035F4 /* Constants.swift in Sources */,
 				CDF87AA42006CE2900B66B76 /* Coordinates.swift in Sources */,
+				CDF87ABE200817C500B66B76 /* CDBusiness+CoreDataClass.swift in Sources */,
 				CDF87AA02006CE2900B66B76 /* Categories.swift in Sources */,
 				CD6492592006B136009035F4 /* DetailViewController.swift in Sources */,
+				CDF87AC1200818A900B66B76 /* DatabaseController.swift in Sources */,
 				CDF87A9F2006CE2900B66B76 /* Business.swift in Sources */,
+				CDF87AB7200808EF00B66B76 /* StoredBusiness.xcdatamodeld in Sources */,
 				CDF87AAE2007DF2900B66B76 /* BusinessDetail.swift in Sources */,
 				CDF87AAF2007DF2900B66B76 /* Hours.swift in Sources */,
 				CDF87AB12007DF2900B66B76 /* Open.swift in Sources */,
@@ -711,6 +747,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CDF87AB5200808EF00B66B76 /* StoredBusiness.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CDF87AB6200808EF00B66B76 /* StoredBusiness.xcdatamodel */,
+			);
+			currentVersion = CDF87AB6200808EF00B66B76 /* StoredBusiness.xcdatamodel */;
+			path = StoredBusiness.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CD64921320068D8F009035F4 /* Project object */;
 }

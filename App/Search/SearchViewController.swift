@@ -17,14 +17,14 @@ class SearchViewController: UIViewController {
     var blurContainerEffectView: UIVisualEffectView?
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
-    var business:[Business]?
-    var selectedBusiness:Business?
+    var businesses:[CDBusiness]?
+    var selectedBusiness:CDBusiness?
     
     let locationManager = CLLocationManager()
     var currentLocation:CLLocationCoordinate2D?
     
     @IBOutlet weak var tableView: UITableView!
-    let testSearchStrings = ["pizza", "coffee", "grocery store", "bar"]
+    var searchTerms:[CDSearchTerm]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,7 +86,7 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let business = self.business {
+        if let business = self.businesses {
             return business.count
         }
         return 0
@@ -95,7 +95,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! SearchCollectionViewCell
         
-        if let business = self.business?[indexPath.item] {
+        if let business = self.businesses?[indexPath.item] {
             cell.loadModel(business: business)
         }
         
@@ -103,7 +103,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.selectedBusiness = self.business![indexPath.item]
+        self.selectedBusiness = self.businesses![indexPath.item]
         self.performSegue(withIdentifier: "showDetail", sender: self)
     }
 }
@@ -111,23 +111,34 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return testSearchStrings.count
+        if let terms = self.searchTerms {
+            return terms.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = testSearchStrings[indexPath.item]
+        if let terms = self.searchTerms {
+            cell.textLabel?.text = terms[indexPath.item].id
+        }
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.searchBar.text = self.testSearchStrings[indexPath.item]
+        if let terms = self.searchTerms {
+            self.searchBar.text = terms[indexPath.item].id
+        }
         self.searchBar.becomeFirstResponder()
         showBookmarks(show: false)
     }
     
     func showBookmarks(show: Bool) {
         if show {
+            self.searchTerms = DatabaseManager.sharedInstance.fetchSearchTerms()
+            self.tableView.reloadData()
+            
             UIView.animate(withDuration: 0.3) {
                 self.tableView.alpha = 1
             }
@@ -148,23 +159,36 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+//MARK: UISearchBarDelegate methods
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.searchBar.resignFirstResponder()
-        if let searchTerm = self.searchBar.text {
+        if let searchTerm = self.searchBar.text?.lowercased() {
             if let lat = UserDefaults.standard.value(forKey: Constants.USER_DEFAULT_LATITUDE) as? Double, let long = UserDefaults.standard.value(forKey: Constants.USER_DEFAULT_LONGITUDE) as? Double {
-                APIManager.sharedInstance.getSearch(term: searchTerm, lat: lat, long: long) { (businesses: [Business]?, error: Error?) in
-                    if let businesses = businesses {
-                        self.business = businesses
-                        self.collectionView.reloadData()
-                    } else {
-                        self.showAlert(title: "Sorry!", message: "No businesses returned from this search.")
-                        
-                        if let error = error {
-                            print("Error: \(error)")
+                // check our database for this search at this location...
+                //... if we've done the search before DO NOT MAKE THE API CALL
+                //... users like snappy apps
+                let isPreviousSearch = DatabaseManager.sharedInstance.isPreviousSearch(term: searchTerm, lat: lat, long: long)
+                
+                if isPreviousSearch {
+                    print("We've stored this search so FAST display!")
+                    self.businesses = DatabaseManager.sharedInstance.fetchBusinesses(searchTermID: searchTerm)?.sorted(by: { $0.id! < $1.id! })
+                    self.collectionView.reloadData()
+                } else {
+                    APIManager.sharedInstance.getSearch(term: searchTerm, lat: lat, long: long) { (businesses: [Business]?, error: Error?) in
+                        if let _ = businesses {
+                            self.businesses = DatabaseManager.sharedInstance.fetchBusinesses(searchTermID: searchTerm)?.sorted(by: { $0.id! < $1.id! })
+                            self.collectionView.reloadData()
+                        } else {
+                            self.showAlert(title: "Sorry!", message: "No businesses returned from this search.  Please make sure you're connected to the Internet.")
+                            
+                            if let error = error {
+                                print("Error: \(error)")
+                            }
                         }
                     }
                 }
+                
             } else {
                 self.showAlert(title: "Sorry!", message: "Your location hasn't been refined.  Make sure the settings for this app allows location.")
             }
@@ -183,9 +207,8 @@ extension SearchViewController: UISearchBarDelegate {
     }
 }
 
+//MARK: CLLocationManagerDelegate methods
 extension SearchViewController: CLLocationManagerDelegate {
-    //MARK: locationManagerDelegate methods
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let location = locations.last
@@ -193,8 +216,8 @@ extension SearchViewController: CLLocationManagerDelegate {
         self.currentLocation = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
         
         if let location = location {
+            print("current location lat: \(location.coordinate.latitude)  lon: \(location.coordinate.longitude)")
             UserDefaults.standard.set(location.coordinate.latitude, forKey: Constants.USER_DEFAULT_LATITUDE)
-            
             UserDefaults.standard.set(location.coordinate.longitude, forKey: Constants.USER_DEFAULT_LONGITUDE)
         }
 
